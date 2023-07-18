@@ -1,5 +1,5 @@
 <script>
-import AppMain from '../components/AppMain.vue';
+import ProjectCard from '../components/ProjectCard.vue';
 export default{
     name:"ProjectList",
     data(){
@@ -8,7 +8,7 @@ export default{
         }
     },
     components:{
-        AppMain
+        ProjectCard
     }
 }
 
@@ -18,7 +18,7 @@ export default{
     
     <section>
         <h4 class="text-center mt-4">Lista Progetti</h4>
-          <AppMain />
+          <ProjectCard />
     </section>
 
 
