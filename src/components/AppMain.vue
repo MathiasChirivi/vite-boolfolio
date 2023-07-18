@@ -91,9 +91,9 @@ export default{
             </div>
         </div>
         <div class="d-flex justify-content-center gap-4 mt-5">
-            <a class="btn btn-success" @click="getProjectsPrevPage"><i class="fa-solid fa-chevron-left" style="color: #ffffff;"></i><span class="ms-3">Previous</span></a>
-            <a class="btn text-white" :class="{ 'btn-success': pageNumber === projectsCurrentPage }" @click="getProjectsPage(pageNumber)" v-for="pageNumber in projectsTotalPages">{{ pageNumber }}</a>
-            <a class="btn btn-success" @click="getProjectsNextPage"><span class="me-3">Next</span><i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i></a>
+            <a class="btn btn-primary" @click="getProjectsPrevPage"><i class="fa-solid fa-chevron-left" style="color: #ffffff;"></i><span class="ms-3">Previous</span></a>
+            <a class="btn text-white" :class="{ 'btn-primary': pageNumber === projectsCurrentPage }" @click="getProjectsPage(pageNumber)" v-for="pageNumber in projectsTotalPages">{{ pageNumber }}</a>
+            <a class="btn btn-primary" @click="getProjectsNextPage"><span class="me-3">Next</span><i class="fa-solid fa-chevron-right" style="color: #ffffff;"></i></a>
         </div>
         </main>
 </template>
