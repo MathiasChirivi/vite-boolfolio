@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export default{
-    name: "AppMain",
+    name: "ProjectCard",
     data(){
         return{
             apiUrl: "http://localhost:8000/api/",
@@ -19,9 +19,9 @@ export default{
             this.loading = true;
             axios.get(this.apiUrl + this.projectsApi).then(response => {
                 console.log(response.data);
-                this.projects = response.data.result.data;
-                this.projectsCurrentPage = response.data.result.current_page;
-                this.projectsTotalPages = response.data.result.last_page
+                this.projects = response.data.results.data;
+                this.projectsCurrentPage = response.data.results.current_page;
+                this.projectsTotalPages = response.data.results.last_page
                 this.loading = false;
             }).catch(err => {
                 this.loading = false;
@@ -39,9 +39,9 @@ export default{
                 this.loading = true;
                 axios.get(this.apiUrl + this.projectsApi, config).then(response => {
                     console.log(response.data);
-                    this.projects = response.data.result.data;
-                    this.projectsCurrentPage = response.data.result.current_page;
-                    this.projectsTotalPages = response.data.result.last_page;
+                    this.projects = response.data.results.data;
+                    this.projectsCurrentPage = response.data.results.current_page;
+                    this.projectsTotalPages = response.data.results.last_page;
                     this.loading = false;
                 }).catch(err => {
                     this.loading = false;

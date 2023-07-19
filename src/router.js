@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import AppHome from './pages/AppHome.vue';
 import AppAbout from './pages/AppAbout.vue';
-import ProjectList from './pages/ProjectList.vue';
+import ProjectCard from './pages/ProjectCard.vue';
+import SingleProject from './pages/SingleProject.vue';
 import ErrorPage from './pages/ErrorPage.vue';
 
 const router = createRouter({
@@ -21,7 +22,12 @@ const router = createRouter({
         {    
             path:"/projects",
             name: "Projects",
-            component: ProjectList,
+            component: ProjectCard,
+        },
+        {    
+            path: "/projects/:id",
+            name: "single-project",
+            component: SingleProject
         },
         {    
             path: "/error/:code",
