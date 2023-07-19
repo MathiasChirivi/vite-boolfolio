@@ -4,7 +4,12 @@ import ProjectCard from './components/ProjectCard.vue'
 export default{
   data(){
     return{
-
+      navLinks:[
+        {label:"Home", name: "Home" },
+        {label:"About-us", name: "About-us" },
+        {label:"Projects", name: "Projects" },
+        // { label: "Testa pagina di errore", name: "error", params: { code: 404 } },
+      ]
     }
   },
   components:{
@@ -16,16 +21,13 @@ export default{
 <template>
 
   <header>
-    <div class="headerContainer d-flex align-items-center justify-content-around bg-white">
-        <div class="d-flex text-black">
-          Logo
-        </div>
-        <div class="d-flex gap-5">
-          <a href="/">Home</a>
-          <a href="/about-us">About-us</a>
-          <a href="/projects">Projects</a>
-        </div>
+    <template class="headerContainer text-black d-flex align-items-center justify-content-around bg-white"> 
+      <div v-for="navLink in navLinks" >
+        <router-link :to="{name: navLink.name, params: navLink.params }" >{{ navLink.label }}</router-link>
       </div>
+    </template>
+
+
   </header>
 
   <router-view></router-view>
