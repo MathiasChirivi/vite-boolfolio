@@ -24,7 +24,6 @@ export default{
       </div>
     </section>
   </header>
-  <router-view></router-view>
 </template>
 
 <style scoped>

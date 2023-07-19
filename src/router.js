@@ -27,12 +27,12 @@ const router = createRouter({
         {    
             path: "/projects/:id",
             name: "single-project",
-            component: SingleProject
+            component: SingleProject,
         },
         {    
             path: "/error/:code",
             name: "error",
-            component: ErrorPage
+            component: ErrorPage,
         },
     ]
 

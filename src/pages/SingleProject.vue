@@ -34,20 +34,23 @@ export default {
 </script>
 
 <template>
-    <section v-if="project">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <p class="card-title"><strong>Titolo:</strong> {{ project.title }}</p>
-                <p v-if="project.tipe" class="card-text"><strong>Tipo</strong> {{ project.tipe.name }}</p>
-                <p v-else="project.tipe" class="card-text">
+    <section>
+        <div v-if="project">
+            <div class="container mt-5">
+                <p><strong>Titolo:</strong> {{ project.title }}</p>
+                <p v-if="project.tipe"><strong>Tipo</strong> {{ project.tipe.name }}</p>
+                <p v-else="project.tipe">
                     <strong>Tipo</strong>: Non esite un tipo per questo progetto
                 </p>
-                <p class="card-text">
+                <p>
                     <strong>Tecnologia usata</strong>:
                     <span v-for="technology in project.technologies">{{ technology.name }}&nbsp;</span>
                 </p>
-                <p class="card-text"><strong>Descrizione:</strong> {{ project.description }}</p>
+                <p><strong>Descrizione:</strong> {{ project.description }}</p>
             </div>
+        </div>
+        <div v-else>
+            <p>Nessun progetto disponibile.</p>
         </div>
     </section>
 </template>
