@@ -64,4 +64,15 @@ export default {
             <p>Nessun progetto disponibile.</p>
         </div>
     </section>
+    
+    <section>
+        <div class="container">
+            <div class="mb-5 d-flex flex-column">
+                <label for="">Aggiungi un commento</label>
+                <textarea class="w-50" name="" id="" cols="30" rows="10"></textarea>
+            </div>
+            <a class="btn btn-primary" type="submit" href="">Invia</a>
+        </div>
+
+    </section>
 </template>
