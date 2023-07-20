@@ -18,11 +18,11 @@ export default{
 
 <template>
   <header>
-    <section class="headerContainer text-black d-flex align-items-center justify-content-around bg-white"> 
+    <div class="headerContainer text-black d-flex align-items-center justify-content-around bg-white"> 
       <div v-for="navLink in navLinks" >
         <router-link :to="{name: navLink.name, params: navLink.params }" >{{ navLink.label }}</router-link>
       </div>
-    </section>
+    </div>
   </header>
 </template>
 

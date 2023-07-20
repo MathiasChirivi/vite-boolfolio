@@ -1,12 +1,12 @@
 <script>
 import axios from "axios";
+import { store } from "../store";
 
 export default{
     name: "ProjectCard",
     data(){
         return{
-            apiUrl: "http://localhost:8000/api/",
-            projectsApi:"projects",
+            store,
             loading: false,
             loadingError: false,
             projects: [],
@@ -17,7 +17,7 @@ export default{
     methods:{
         getProjectsFirstPage(){
             this.loading = true;
-            axios.get(this.apiUrl + this.projectsApi).then(response => {
+            axios.get(this.store.apiUrl + this.store.projectsApi).then(response => {
                 console.log(response.data);
                 this.projects = response.data.results.data;
                 this.projectsCurrentPage = response.data.results.current_page;
@@ -37,7 +37,7 @@ export default{
                     }
                 };
                 this.loading = true;
-                axios.get(this.apiUrl + this.projectsApi, config).then(response => {
+                axios.get(this.store.apiUrl + this.store.projectsApi, config).then(response => {
                     console.log(response.data);
                     this.projects = response.data.results.data;
                     this.projectsCurrentPage = response.data.results.current_page;
@@ -76,16 +76,21 @@ export default{
         <div class="container mx-auto">
             <div class="d-flex flex-wrap gap-3 justify-content-between">
                 <div v-for="project in projects">
-                    <div class="card"  style="width: 18rem;">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" :src="store.storageUrl + project.image" />
                         <div class="card-body">
-                            <p class="card-title"><strong>Titolo:</strong> {{ project.title }}</p>
+                            <p class="card-title">
+                                <router-link :to="{name: 'single-project', params:{id: project.id}}">
+                                    <strong>Titolo:</strong> {{ project.title }}
+                                </router-link>
+                            </p>
                             <p v-if="project.tipe" class="card-text"><strong>Tipo</strong> {{ project.tipe.name }}</p>
                             <p v-else="project.tipe" class="card-text">
                                 <strong>Tipo</strong>: Non esite un tipo per questo progetto</p>
                             <p class="card-text">
                                 <strong>Tecnologia usata</strong>:
                                 <span v-for="technology in project.technologies">{{ technology.name }}&nbsp;</span></p>
-                            <p class="card-text"><strong>Descrizione:</strong> {{ project.description }}</p>
+                            <p class="card-text lineClamp2"><strong>Descrizione:</strong> {{ project.description }}</p>
                         </div>
                     </div>
                 </div>
@@ -118,6 +123,14 @@ export default{
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+.lineClamp2{
+    display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
 }
 </style>
 
